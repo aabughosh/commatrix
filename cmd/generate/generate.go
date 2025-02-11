@@ -30,13 +30,13 @@ var (
 	commatrixLong = templates.LongDesc(`
 			  Generate an up-to-date communication flows matrix for all ingress flows of Kubernetes (multi-node and single-node in OpenShift) and Operators.
 
-			  This command will generate the communication flows matrix, the SS matrix, and the difference between them.
+			  This command will generate EndpointSlice matrix and the the matrix of host open ports, as well as the difference between the two.
 
 			  For additional details, please refer to the communication matrix documentation(https://github.com/openshift-kni/commatrix/blob/main/README.md)
 
 	`)
 	CommatrixExample = templates.Examples(`
-			 # Generate all communication matrices including SS, EndpointSlice, and their differences in selected format:
+			 # Generate all communication matrices including host open ports, EndpointSlice, and their differences in selected format:
 			 kubectl commatrix generate --host-open-ports --format (json|yaml|csv|nft)
 			
 			 # Generate the endpointSlice matrix in json format with custom entries:
@@ -120,7 +120,7 @@ func NewCmdCommatrixGenerate(cs *client.ClientSet, streams genericiooptions.IOSt
 	cmd.Flags().BoolVar(&o.debug, "debug", false, "Debug logs")
 	cmd.Flags().StringVar(&o.customEntriesPath, "customEntriesPath", "", "Add custom entries from a file to the matrix")
 	cmd.Flags().StringVar(&o.customEntriesFormat, "customEntriesFormat", "", "Set the format of the custom entries file (json,yaml,csv)")
-	cmd.Flags().BoolVar(&o.openPorts, "host-open-ports", false, "Generate communication matrices: EndpointSlice matrix, SS matrix, and their difference.")
+	cmd.Flags().BoolVar(&o.openPorts, "host-open-ports", false, "Generate communication matrices: EndpointSlice matrix, host open ports matrix, and their difference.")
 
 	return cmd
 }
