@@ -1,0 +1,83 @@
+name: Test Incoming Changes
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+
+jobs:
+  lint:
+    name: Set Up a Kubernetes Cluster and test the Generate of Communication Matrix
+    runs-on: ubuntu-22.04
+    env:
+      KUBECTL_VERSION: "v1.32.1"
+      KIND_VERSION: "v0.20.0"
+      KIND_NODE_IMAGE: "kindest/node:v1.27.3"
+      GO_VERSION: "1.23.1"
+      DEST_DIR: ./commatrix_output
+
+    steps:
+      - name: Set up Go ${{ env.GO_VERSION }}
+        uses: actions/setup-go@v5
+        with:
+          go-version:  ${{ env.GO_VERSION }}
+
+      - name: Disable default go problem matcher
+        run: echo "::remove-matcher owner=go::"
+
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Install kubectl
+        run: |
+          curl -LO "https://dl.k8s.io/release/${{ env.KUBECTL_VERSION }}/bin/linux/amd64/kubectl"
+          sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+          
+      - name: Install Kind
+        run: |
+          curl -Lo ./kind https://kind.sigs.k8s.io/dl/${{ env.KIND_VERSION }}/kind-linux-amd64
+          chmod +x ./kind
+          sudo mv ./kind /usr/local/bin/
+
+      - name: Create Kind Cluster
+        run: |
+          kind create cluster --name test-cluster --image "${{ env.KIND_NODE_IMAGE }}"
+
+      - name: Set kubectl context for Kind cluster
+        run: |
+          kind get kubeconfig --name test-cluster > kubeconfig.yaml
+          export KUBECONFIG=kubeconfig.yaml
+          kubectl cluster-info --context kind-test-cluster
+
+      - name: Wait for Kind Cluster to Be Ready
+        run: |
+          kubectl wait --for=condition=Ready nodes --all --timeout=120s || echo "Waiting for nodes to be ready timed out."
+
+      - name: Build kubectl-commatrix
+        run: make build
+
+      - name: Install kubectl-commatrix
+        run: sudo make install
+
+      - name: Verify kubectl-commatrix Installation
+        run: |
+          kubectl commatrix generate --help
+
+      - name: Create destination directory
+        run: |
+            mkdir -p "${{ env.DEST_DIR }}"
+
+      - name: generate commatrix with csv format
+        run: |
+          kubectl commatrix generate --format csv --destDir="${{ env.DEST_DIR }}"
+
+      - name: Print content of files in destination directory
+        run: |
+          echo "Printing files in ${DEST_DIR}:"
+          ls "${{ env.DEST_DIR }}"  # List files in the destination directory
+          cat "${{ env.DEST_DIR }}"/*  # Print the content of each file
