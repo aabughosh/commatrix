@@ -1,5 +1,6 @@
 communication-matrix/*
 commatrix-gen
+kubectl-commatrix
 
 bin/
 vendor/
