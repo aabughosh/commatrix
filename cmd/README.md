@@ -49,6 +49,7 @@ Flags:
       --destDir string               Output files dir (default communication-matrix)
       --format string                Desired format (json,yaml,csv,nft) (default "csv")
       --host-open-ports              Generate communication matrix, host open port matrix, and their difference.
+      --isBM                         Platform is baremetal (optional;auto detect if not set).
   ```
 
 

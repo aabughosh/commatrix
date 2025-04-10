@@ -236,6 +236,11 @@ func (u *utils) IsBMInfra() (bool, error) {
 		return false, err
 	}
 
+	if infra.Status.PlatformStatus.Type == configv1.NonePlatformType {
+		log.Println("Detected platform type as 'None'; assuming cloud by default. " +
+			"If this is not accurate, please set the --isBM flag.")
+	}
+
 	return infra.Status.PlatformStatus.Type == configv1.BareMetalPlatformType, nil
 }
 

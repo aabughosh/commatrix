@@ -67,6 +67,7 @@ var (
 )
 
 type GenerateOptions struct {
+	isBM                bool
 	destDir             string
 	format              string
 	customEntriesPath   string
@@ -109,6 +110,13 @@ func NewCmdCommatrixGenerate(cs *client.ClientSet, streams genericiooptions.IOSt
 		Long:    commatrixLong,
 		Example: CommatrixExample,
 		RunE: func(c *cobra.Command, args []string) (err error) {
+			if !c.Flags().Changed("isBM") {
+				o.isBM, err = o.utilsHelpers.IsBMInfra()
+				if err != nil {
+					return fmt.Errorf("failed to check is bm cluster %s", err)
+				}
+			}
+
 			if err := Validate(o); err != nil {
 				return err
 			}
@@ -123,12 +131,14 @@ func NewCmdCommatrixGenerate(cs *client.ClientSet, streams genericiooptions.IOSt
 			return nil
 		},
 	}
+
 	cmd.Flags().StringVar(&o.destDir, "destDir", "", "Output files dir (default communication-matrix)")
 	cmd.Flags().StringVar(&o.format, "format", "csv", "Desired format (json,yaml,csv,nft)")
 	cmd.Flags().BoolVar(&o.debug, "debug", false, "Debug logs")
 	cmd.Flags().StringVar(&o.customEntriesPath, "customEntriesPath", "", "Add custom entries from a file to the matrix")
 	cmd.Flags().StringVar(&o.customEntriesFormat, "customEntriesFormat", "", "Set the format of the custom entries file (json,yaml,csv)")
 	cmd.Flags().BoolVar(&o.openPorts, "host-open-ports", false, "Generate communication matrix, host open ports matrix, and their difference")
+	cmd.Flags().BoolVar(&o.isBM, "isBM", false, "Platform is baremetal (optional; auto detect if not set)")
 
 	return cmd
 }
@@ -189,12 +199,7 @@ func Run(o *GenerateOptions) (err error) {
 		deployment = types.SNO
 	}
 
-	isBM, err := o.utilsHelpers.IsBMInfra()
-	if err != nil {
-		return fmt.Errorf("failed to check is bm cluster %s", err)
-	}
-
-	if isBM {
+	if o.isBM {
 		infra = types.Baremetal
 	}
 
