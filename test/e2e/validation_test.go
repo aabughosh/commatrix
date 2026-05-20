@@ -227,6 +227,16 @@ func filterOutPortsOfKnownServices(mat *types.ComMatrix) *types.ComMatrix {
 			continue
 		}
 
+		// CRI-O can bind ancillary listeners on the node IP inside the default Linux
+		// local port range (/proc/sys/net/ipv4/ip_local_port_range, typically 32768-60999).
+		// Those sockets are attributed to PID 1 / the runtime (no pod cgroup), never appear
+		// in EndpointSlices, and the chosen port varies between boots.
+		if cd.Protocol == "TCP" &&
+			cd.Service == "crio" && cd.Namespace == "" && cd.Pod == "" &&
+			cd.Port >= 32768 && cd.Port <= 60999 {
+			continue
+		}
+
 		// Skip dns ports used during provisioning for dhcp and tftp,
 		// not used for external traffic
 		if cd.Service == "dnsmasq" || cd.Service == "dig" {
