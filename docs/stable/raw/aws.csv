@@ -6,7 +6,7 @@ Ingress,TCP,2380,openshift-etcd,healthz,etcd,etcd,master,FALSE
 Ingress,TCP,2381,openshift-etcd,etcd,etcd,etcd,master,FALSE
 Ingress,TCP,6080,openshift-kube-apiserver,,kube-apiserver,kube-apiserver-insecure-readyz,master,FALSE
 Ingress,TCP,6443,openshift-kube-apiserver,apiserver,kube-apiserver,kube-apiserver,master,FALSE
-Ingress,TCP,8798,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,master,FALSE
+Ingress,TCP,8797,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,master,FALSE
 Ingress,TCP,9001,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,kube-rbac-proxy,master,FALSE
 Ingress,TCP,9099,openshift-cluster-version,cluster-version-operator,cluster-version-operator,cluster-version-operator,master,FALSE
 Ingress,TCP,9100,openshift-monitoring,node-exporter,node-exporter,kube-rbac-proxy,master,FALSE
@@ -36,7 +36,7 @@ Ingress,TCP,22,Host system service,sshd,,,worker,TRUE
 Ingress,TCP,80,openshift-ingress,router-default,router-default,router,worker,FALSE
 Ingress,TCP,111,Host system service,rpcbind,,,worker,TRUE
 Ingress,TCP,443,openshift-ingress,router-default,router-default,router,worker,FALSE
-Ingress,TCP,8798,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,worker,FALSE
+Ingress,TCP,8797,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,worker,FALSE
 Ingress,TCP,9001,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,kube-rbac-proxy,worker,FALSE
 Ingress,TCP,9100,openshift-monitoring,node-exporter,node-exporter,kube-rbac-proxy,worker,FALSE
 Ingress,TCP,9103,openshift-ovn-kubernetes,ovn-kubernetes-node,ovnkube-node,kube-rbac-proxy-node,worker,FALSE

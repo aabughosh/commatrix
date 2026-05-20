@@ -23,7 +23,7 @@ import (
 
 const (
 	tcpExecCommandOutput = (`LISTEN 0      4096      127.0.0.1:8797  0.0.0.0:* users:(("machine-config-",pid=3534,fd=3))                
-	LISTEN 0      4096      127.0.0.1:8798  0.0.0.0:* users:(("machine-config-",pid=3534,fd=13))               
+	LISTEN 0      4096      127.0.0.1:8797  0.0.0.0:* users:(("machine-config-",pid=3534,fd=13))               
 	LISTEN 0      4096      127.0.0.1:9100  0.0.0.0:* users:(("node_exporter",pid=4147,fd=3))`)
 
 	udpExecCommandOutput = (`UNCONN 0      0           0.0.0.0:111   0.0.0.0:* users:(("rpcbind",pid=1399,fd=5),("systemd",pid=1,fd=78))
@@ -49,7 +49,7 @@ const (
 
 	expectedTCPOutput = `node: test-node
 	LISTEN 0      4096      127.0.0.1:8797  0.0.0.0:* users:(("machine-config-",pid=3534,fd=3))                
-	LISTEN 0      4096      127.0.0.1:8798  0.0.0.0:* users:(("machine-config-",pid=3534,fd=13))               
+	LISTEN 0      4096      127.0.0.1:8797  0.0.0.0:* users:(("machine-config-",pid=3534,fd=13))               
 	LISTEN 0      4096      127.0.0.1:9100  0.0.0.0:* users:(("node_exporter",pid=4147,fd=3))`
 
 	expectedUDPOutput = `node: test-node
@@ -237,7 +237,7 @@ var _ = Describe("filterEntries (loopback filtering)", func() {
 	It("should filter out loopback addresses from ss entries", func() {
 		entries := []string{
 			`LISTEN 0 4096 127.0.0.1:8797 0.0.0.0:* users:(("service1",pid=1234,fd=3))`,
-			`LISTEN 0 4096 127.1.2.3:8798 0.0.0.0:* users:(("service2",pid=1235,fd=3))`,
+			`LISTEN 0 4096 127.1.2.3:8797 0.0.0.0:* users:(("service2",pid=1235,fd=3))`,
 			`LISTEN 0 4096 0.0.0.0:9100 0.0.0.0:* users:(("service3",pid=1236,fd=3))`,
 			`UNCONN 0 0 10.46.97.104:500 0.0.0.0:* users:(("service4",pid=1237,fd=3))`,
 			`LISTEN 0 4096 ::1:8800 :::* users:(("service5",pid=1238,fd=3))`,
