@@ -1,0 +1,13 @@
+UNIFIED PORT MAP — each port with all its data in one place
+
+PORT 9443:
+  Issues: STALE_IN_MATRIX
+  Ephemeral range: no
+  Matrix entry: Ingress,TCP,9443,openshift-cloud-controller-manager-operator,cloud-controller-manager-operator,cluster-cloud-controller-manager-operator,cluster-cloud-controller-manager,master,false
+  --> Needs decision: ADD / REMOVE / SKIP / INVESTIGATE
+
+PORT 10258:
+  Issues: STALE_IN_MATRIX
+  Ephemeral range: no
+  Matrix entry: Ingress,TCP,10258,openshift-cloud-controller-manager,aws-cloud-controller-manager,aws-cloud-controller-manager,cloud-controller-manager,master,false
+  --> Needs decision: ADD / REMOVE / SKIP / INVESTIGATE
