@@ -227,6 +227,12 @@ func filterOutPortsOfKnownServices(mat *types.ComMatrix) *types.ComMatrix {
 			continue
 		}
 
+		// CRI-O opens a high TCP port for the container streaming server; the port is chosen
+		// dynamically and is not reflected in EndpointSlices (no Kubernetes Service).
+		if cd.Service == "crio" {
+			continue
+		}
+
 		// Skip dns ports used during provisioning for dhcp and tftp,
 		// not used for external traffic
 		if cd.Service == "dnsmasq" || cd.Service == "dig" {

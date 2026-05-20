@@ -1,0 +1,160 @@
+diff --git a/docs/stable/raw/aws-sno.csv b/docs/stable/raw/aws-sno.csv
+index 667fd54..0929c35 100644
+--- a/docs/stable/raw/aws-sno.csv
++++ b/docs/stable/raw/aws-sno.csv
+@@ -8,7 +8,7 @@ Ingress,TCP,2380,openshift-etcd,healthz,etcd,etcd,master,FALSE
+ Ingress,TCP,2381,openshift-etcd,etcd,etcd,etcd,master,FALSE
+ Ingress,TCP,6080,openshift-kube-apiserver,,kube-apiserver,kube-apiserver-insecure-readyz,master,FALSE
+ Ingress,TCP,6443,openshift-kube-apiserver,apiserver,kube-apiserver,kube-apiserver,master,FALSE
+-Ingress,TCP,8798,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,master,FALSE
++Ingress,TCP,8797,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,master,FALSE
+ Ingress,TCP,9001,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,kube-rbac-proxy,master,FALSE
+ Ingress,TCP,9099,openshift-cluster-version,cluster-version-operator,cluster-version-operator,cluster-version-operator,master,FALSE
+ Ingress,TCP,9100,openshift-monitoring,node-exporter,node-exporter,kube-rbac-proxy,master,FALSE
+@@ -17,7 +17,6 @@ Ingress,TCP,9104,openshift-network-operator,metrics,network-operator,network-ope
+ Ingress,TCP,9105,openshift-ovn-kubernetes,ovn-kubernetes-node,ovnkube-node,kube-rbac-proxy-ovn-metrics,master,FALSE
+ Ingress,TCP,9107,openshift-ovn-kubernetes,egressip-node-healthcheck,ovnkube-node,ovnkube-controller,master,FALSE
+ Ingress,TCP,9108,openshift-ovn-kubernetes,ovn-kubernetes-control-plane,ovnkube-control-plane,kube-rbac-proxy,master,FALSE
+-Ingress,TCP,9192,openshift-cluster-machine-approver,machine-approver,machine-approver,kube-rbac-proxy,master,FALSE
+ Ingress,TCP,9258,openshift-cloud-controller-manager-operator,machine-approver,cluster-cloud-controller-manager,cluster-cloud-controller-manager,master,FALSE
+ Ingress,TCP,9443,openshift-cloud-controller-manager-operator,cloud-controller-manager-operator,cluster-cloud-controller-manager-operator,cluster-cloud-controller-manager,master,FALSE
+ Ingress,TCP,9637,openshift-machine-config-operator,kube-rbac-proxy-crio,kube-rbac-proxy-crio,kube-rbac-proxy-crio,master,FALSE
+diff --git a/docs/stable/raw/aws.csv b/docs/stable/raw/aws.csv
+index 43cf14e..210da2b 100644
+--- a/docs/stable/raw/aws.csv
++++ b/docs/stable/raw/aws.csv
+@@ -6,7 +6,7 @@ Ingress,TCP,2380,openshift-etcd,healthz,etcd,etcd,master,FALSE
+ Ingress,TCP,2381,openshift-etcd,etcd,etcd,etcd,master,FALSE
+ Ingress,TCP,6080,openshift-kube-apiserver,,kube-apiserver,kube-apiserver-insecure-readyz,master,FALSE
+ Ingress,TCP,6443,openshift-kube-apiserver,apiserver,kube-apiserver,kube-apiserver,master,FALSE
+-Ingress,TCP,8798,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,master,FALSE
++Ingress,TCP,8797,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,master,FALSE
+ Ingress,TCP,9001,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,kube-rbac-proxy,master,FALSE
+ Ingress,TCP,9099,openshift-cluster-version,cluster-version-operator,cluster-version-operator,cluster-version-operator,master,FALSE
+ Ingress,TCP,9100,openshift-monitoring,node-exporter,node-exporter,kube-rbac-proxy,master,FALSE
+@@ -36,7 +36,7 @@ Ingress,TCP,22,Host system service,sshd,,,worker,TRUE
+ Ingress,TCP,80,openshift-ingress,router-default,router-default,router,worker,FALSE
+ Ingress,TCP,111,Host system service,rpcbind,,,worker,TRUE
+ Ingress,TCP,443,openshift-ingress,router-default,router-default,router,worker,FALSE
+-Ingress,TCP,8798,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,worker,FALSE
++Ingress,TCP,8797,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,worker,FALSE
+ Ingress,TCP,9001,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,kube-rbac-proxy,worker,FALSE
+ Ingress,TCP,9100,openshift-monitoring,node-exporter,node-exporter,kube-rbac-proxy,worker,FALSE
+ Ingress,TCP,9103,openshift-ovn-kubernetes,ovn-kubernetes-node,ovnkube-node,kube-rbac-proxy-node,worker,FALSE
+diff --git a/docs/stable/raw/bm.csv b/docs/stable/raw/bm.csv
+index eb6a004..205fc08 100644
+--- a/docs/stable/raw/bm.csv
++++ b/docs/stable/raw/bm.csv
+@@ -11,7 +11,7 @@ Ingress,TCP,6183,openshift-machine-api,metal3-state,metal3,metal3-httpd,master,F
+ Ingress,TCP,6385,openshift-machine-api,metal3-state,metal3,metal3-httpd,master,FALSE
+ Ingress,TCP,6388,openshift-machine-api,metal3-state,metal3,metal3-httpd,master,FALSE
+ Ingress,TCP,6443,openshift-kube-apiserver,apiserver,kube-apiserver,kube-apiserver,master,FALSE
+-Ingress,TCP,8798,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,master,FALSE
++Ingress,TCP,8797,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,master,FALSE
+ Ingress,TCP,9001,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,kube-rbac-proxy,master,FALSE
+ Ingress,TCP,9099,openshift-cluster-version,cluster-version-operator,cluster-version-operator,cluster-version-operator,master,FALSE
+ Ingress,TCP,9100,openshift-monitoring,node-exporter,node-exporter,kube-rbac-proxy,master,FALSE
+@@ -48,7 +48,7 @@ Ingress,TCP,80,openshift-ingress,router-internal-default,router-default,router,w
+ Ingress,TCP,111,Host system service,rpcbind,,,worker,TRUE
+ Ingress,TCP,443,openshift-ingress,router-internal-default,router-default,router,worker,FALSE
+ Ingress,TCP,1936,openshift-ingress,router-internal-default,router-default,router,worker,FALSE
+-Ingress,TCP,8798,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,worker,FALSE
++Ingress,TCP,8797,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,worker,FALSE
+ Ingress,TCP,9001,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,kube-rbac-proxy,worker,FALSE
+ Ingress,TCP,9100,openshift-monitoring,node-exporter,node-exporter,kube-rbac-proxy,worker,FALSE
+ Ingress,TCP,9103,openshift-ovn-kubernetes,ovn-kubernetes-node,ovnkube-node,kube-rbac-proxy-node,worker,FALSE
+diff --git a/docs/stable/raw/none-sno.csv b/docs/stable/raw/none-sno.csv
+index da80a55..11e5bba 100644
+--- a/docs/stable/raw/none-sno.csv
++++ b/docs/stable/raw/none-sno.csv
+@@ -10,7 +10,7 @@ Ingress,TCP,2380,openshift-etcd,healthz,etcd,etcd,master,FALSE
+ Ingress,TCP,2381,openshift-etcd,etcd,etcd,etcd,master,FALSE
+ Ingress,TCP,6080,openshift-kube-apiserver,,kube-apiserver,kube-apiserver-insecure-readyz,master,FALSE
+ Ingress,TCP,6443,openshift-kube-apiserver,apiserver,kube-apiserver,kube-apiserver,master,FALSE
+-Ingress,TCP,8798,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,master,FALSE
++Ingress,TCP,8797,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,master,FALSE
+ Ingress,TCP,9001,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,kube-rbac-proxy,master,FALSE
+ Ingress,TCP,9099,openshift-cluster-version,cluster-version-operator,cluster-version-operator,cluster-version-operator,master,FALSE
+ Ingress,TCP,9100,openshift-monitoring,node-exporter,node-exporter,kube-rbac-proxy,master,FALSE
+@@ -19,7 +19,6 @@ Ingress,TCP,9104,openshift-network-operator,metrics,network-operator,network-ope
+ Ingress,TCP,9105,openshift-ovn-kubernetes,ovn-kubernetes-node,ovnkube-node,kube-rbac-proxy-ovn-metrics,master,FALSE
+ Ingress,TCP,9107,openshift-ovn-kubernetes,egressip-node-healthcheck,ovnkube-node,ovnkube-controller,master,FALSE
+ Ingress,TCP,9108,openshift-ovn-kubernetes,ovn-kubernetes-control-plane,ovnkube-control-plane,kube-rbac-proxy,master,FALSE
+-Ingress,TCP,9192,openshift-cluster-machine-approver,machine-approver,machine-approver,kube-rbac-proxy,master,FALSE
+ Ingress,TCP,9258,openshift-cloud-controller-manager-operator,machine-approver,cluster-cloud-controller-manager,cluster-cloud-controller-manager,master,FALSE
+ Ingress,TCP,9443,openshift-cloud-controller-manager-operator,cloud-controller-manager-operator,cluster-cloud-controller-manager-operator,cluster-cloud-controller-manager,master,FALSE
+ Ingress,TCP,9637,openshift-machine-config-operator,kube-rbac-proxy-crio,kube-rbac-proxy-crio,kube-rbac-proxy-crio,master,FALSE
+diff --git a/docs/stable/unique/common-master.csv b/docs/stable/unique/common-master.csv
+index 7d146f0..fd34c0d 100644
+--- a/docs/stable/unique/common-master.csv
++++ b/docs/stable/unique/common-master.csv
+@@ -5,7 +5,7 @@ Ingress,TCP,2379,openshift-etcd,etcd,etcd,etcdctl,master,FALSE
+ Ingress,TCP,2380,openshift-etcd,healthz,etcd,etcd,master,FALSE
+ Ingress,TCP,6080,openshift-kube-apiserver,,kube-apiserver,kube-apiserver-insecure-readyz,master,FALSE
+ Ingress,TCP,6443,openshift-kube-apiserver,apiserver,kube-apiserver,kube-apiserver,master,FALSE
+-Ingress,TCP,8798,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,master,FALSE
++Ingress,TCP,8797,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,master,FALSE
+ Ingress,TCP,9001,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,kube-rbac-proxy,master,FALSE
+ Ingress,TCP,9099,openshift-cluster-version,cluster-version-operator,cluster-version-operator,cluster-version-operator,master,FALSE
+ Ingress,TCP,9100,openshift-monitoring,node-exporter,node-exporter,kube-rbac-proxy,master,FALSE
+diff --git a/docs/stable/unique/common-worker.csv b/docs/stable/unique/common-worker.csv
+index 8388cc3..31d20ec 100644
+--- a/docs/stable/unique/common-worker.csv
++++ b/docs/stable/unique/common-worker.csv
+@@ -1,7 +1,7 @@
+ Direction,Protocol,Port,Namespace,Service,Pod,Container,Node Role,Optional
+ Ingress,TCP,22,Host system service,sshd,,,worker,TRUE
+ Ingress,TCP,111,Host system service,rpcbind,,,worker,TRUE
+-Ingress,TCP,8798,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,worker,FALSE
++Ingress,TCP,8797,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,machine-config-daemon,worker,FALSE
+ Ingress,TCP,9001,openshift-machine-config-operator,machine-config-daemon,machine-config-daemon,kube-rbac-proxy,worker,FALSE
+ Ingress,TCP,9100,openshift-monitoring,node-exporter,node-exporter,kube-rbac-proxy,worker,FALSE
+ Ingress,TCP,9103,openshift-ovn-kubernetes,ovn-kubernetes-node,ovnkube-node,kube-rbac-proxy-node,worker,FALSE
+diff --git a/pkg/listening-sockets/listening_sockets_test.go b/pkg/listening-sockets/listening_sockets_test.go
+index 4576ca2..7e43782 100644
+--- a/pkg/listening-sockets/listening_sockets_test.go
++++ b/pkg/listening-sockets/listening_sockets_test.go
+@@ -23,7 +23,7 @@ import (
+ 
+ const (
+ 	tcpExecCommandOutput = (`LISTEN 0      4096      127.0.0.1:8797  0.0.0.0:* users:(("machine-config-",pid=3534,fd=3))                
+-	LISTEN 0      4096      127.0.0.1:8798  0.0.0.0:* users:(("machine-config-",pid=3534,fd=13))               
++	LISTEN 0      4096      127.0.0.1:8797  0.0.0.0:* users:(("machine-config-",pid=3534,fd=13))               
+ 	LISTEN 0      4096      127.0.0.1:9100  0.0.0.0:* users:(("node_exporter",pid=4147,fd=3))`)
+ 
+ 	udpExecCommandOutput = (`UNCONN 0      0           0.0.0.0:111   0.0.0.0:* users:(("rpcbind",pid=1399,fd=5),("systemd",pid=1,fd=78))
+@@ -49,7 +49,7 @@ const (
+ 
+ 	expectedTCPOutput = `node: test-node
+ 	LISTEN 0      4096      127.0.0.1:8797  0.0.0.0:* users:(("machine-config-",pid=3534,fd=3))                
+-	LISTEN 0      4096      127.0.0.1:8798  0.0.0.0:* users:(("machine-config-",pid=3534,fd=13))               
++	LISTEN 0      4096      127.0.0.1:8797  0.0.0.0:* users:(("machine-config-",pid=3534,fd=13))               
+ 	LISTEN 0      4096      127.0.0.1:9100  0.0.0.0:* users:(("node_exporter",pid=4147,fd=3))`
+ 
+ 	expectedUDPOutput = `node: test-node
+@@ -237,7 +237,7 @@ var _ = Describe("filterEntries (loopback filtering)", func() {
+ 	It("should filter out loopback addresses from ss entries", func() {
+ 		entries := []string{
+ 			`LISTEN 0 4096 127.0.0.1:8797 0.0.0.0:* users:(("service1",pid=1234,fd=3))`,
+-			`LISTEN 0 4096 127.1.2.3:8798 0.0.0.0:* users:(("service2",pid=1235,fd=3))`,
++			`LISTEN 0 4096 127.1.2.3:8797 0.0.0.0:* users:(("service2",pid=1235,fd=3))`,
+ 			`LISTEN 0 4096 0.0.0.0:9100 0.0.0.0:* users:(("service3",pid=1236,fd=3))`,
+ 			`UNCONN 0 0 10.46.97.104:500 0.0.0.0:* users:(("service4",pid=1237,fd=3))`,
+ 			`LISTEN 0 4096 ::1:8800 :::* users:(("service5",pid=1238,fd=3))`,
+diff --git a/test/e2e/validation_test.go b/test/e2e/validation_test.go
+index 69aa564..37706d0 100644
+--- a/test/e2e/validation_test.go
++++ b/test/e2e/validation_test.go
+@@ -227,6 +227,12 @@ func filterOutPortsOfKnownServices(mat *types.ComMatrix) *types.ComMatrix {
+ 			continue
+ 		}
+ 
++		// CRI-O opens a high TCP port for the container streaming server; the port is chosen
++		// dynamically and is not reflected in EndpointSlices (no Kubernetes Service).
++		if cd.Service == "crio" {
++			continue
++		}
++
+ 		// Skip dns ports used during provisioning for dhcp and tftp,
+ 		// not used for external traffic
+ 		if cd.Service == "dnsmasq" || cd.Service == "dig" {
