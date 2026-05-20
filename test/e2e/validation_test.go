@@ -32,6 +32,11 @@ const (
 	matrixdiffFile     = "matrix-diff-ss"
 	serviceNodePortMin = 30000
 	serviceNodePortMax = 32767
+	// Default Linux ephemeral port range (see net.ipv4.ip_local_port_range, e.g. RHEL/OpenShift nodes).
+	// CRI-O may LISTEN on the node primary IP inside this range for stream/exec plumbing; ports are not
+	// EndpointSlice-backed and change across reboots.
+	linuxEphemeralPortMin = 32768
+	linuxEphemeralPortMax = 60999
 )
 
 type EPSStatus string
@@ -224,6 +229,13 @@ func filterOutPortsOfKnownServices(mat *types.ComMatrix) *types.ComMatrix {
 		// Skip "rpc.statd" ports, these are randomly open ports on the node
 		// no need to mention them in the matrix diff
 		if cd.Service == "rpc.statd" {
+			continue
+		}
+
+		// CRI-O can appear as the owner in `ss` for listeners on ephemeral ports during stream/attach/exec;
+		// these are never represented as EndpointSlices and the port numbers are not stable.
+		if cd.Service == "crio" && cd.Protocol == "TCP" &&
+			cd.Port >= linuxEphemeralPortMin && cd.Port <= linuxEphemeralPortMax {
 			continue
 		}
 
