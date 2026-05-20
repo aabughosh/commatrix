@@ -1,0 +1,62 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.0.70.165"
+                    ],
+                    "conditions": {
+                        "ready": true
+                    }
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "creationTimestamp": "2026-05-19T13:16:10Z",
+                "generation": 11,
+                "labels": {
+                    "kubernetes.io/service-name": "kubernetes"
+                },
+                "name": "kubernetes",
+                "namespace": "default",
+                "resourceVersion": "21077",
+                "uid": "4fd83421-c6c3-42f5-9204-669cdfe68b3f"
+            },
+            "ports": [
+                {
+                    "name": "https",
+                    "port": 6443,
+                    "protocol": "TCP"
+                }
+            ]
+        },
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.0.70.165"
+                    ],
+                    "conditions": {
+                        "ready": true
+                    },
+                    "nodeName": "ip-10-0-70-165.ec2.internal",
+                    "targetRef": {
+                        "kind": "Node",
+                        "name": "ip-10-0-70-165.ec2.internal",
+                        "uid": "e3a0a305-b5ab-446d-b382-e891e07baaa6"
+                    }
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "creationTimestamp": "2026-05-19T13:22:39Z",
+                "generateName": "kubelet-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/managed-b
