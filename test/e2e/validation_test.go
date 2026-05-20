@@ -32,6 +32,9 @@ const (
 	matrixdiffFile     = "matrix-diff-ss"
 	serviceNodePortMin = 30000
 	serviceNodePortMax = 32767
+	// Default RHEL/CoreOS sysctl net.ipv4.ip_local_port_range (see `ip_local_port_range`)
+	linuxEphemeralMinPortTCP = 32768
+	linuxEphemeralMaxPortTCP = 60999
 )
 
 type EPSStatus string
@@ -221,6 +224,13 @@ func isDHCPClientPort(cd types.ComDetails) bool {
 func filterOutPortsOfKnownServices(mat *types.ComMatrix) *types.ComMatrix {
 	res := []types.ComDetails{}
 	for _, cd := range mat.Ports {
+		// CRI-O may LISTEN inside the IPv4 ephemeral local port range (e.g. stream helpers)
+		// on the primary node NIC. These sockets are never represented as EndpointSlices.
+		if cd.Service == "crio" && cd.Protocol == "TCP" &&
+			cd.Port >= linuxEphemeralMinPortTCP && cd.Port <= linuxEphemeralMaxPortTCP {
+			continue
+		}
+
 		// Skip "rpc.statd" ports, these are randomly open ports on the node
 		// no need to mention them in the matrix diff
 		if cd.Service == "rpc.statd" {
