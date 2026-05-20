@@ -1,0 +1,23 @@
+Severity: HIGH
+Fix type: data_update
+Suggested fix: Update the matrix or investigate the port discrepancies:
+
+REMOVE from matrix (ports no longer in use):
+  Ingress,TCP,9443,openshift-cloud-controller-manager-operator,cloud-controller-manager-operator,cluster-cloud-controller-manager-operator,cluster-cloud-controller-manager,master,false
+  Ingress,TCP,10258,openshift-cloud-controller-manager,aws-cloud-controller-manager,aws-cloud-controller-manager,cloud-controller-manager,master,false
+
+
+Failed test: Validation [BeforeEach] generated communication matrix should be equal to documented communication matrix
+  Message: 
+
+Failed test: in [BeforeEach] - /tmp/secret/commatrix/test/e2e/validation_test.go:52 @ 05/19/26 13:58:49.431
+  Message: 
+
+Failed test: [13.115 seconds]
+  Message: 45   [It] /tmp/secret/commatrix/test/e2e/validation_test.go:66
+
+Failed test: Failed to run command: /usr/local/bin/oc commatrix generate --host-open-ports --destDir /logs/artifacts/commatrix-e2e
+  Message: /usr/local/bin/oc commatrix generate --host-open-ports --destDir /logs/artifacts/commatrix-e2e   stdout:
+
+Failed test: TestE2e
+  Message: Failed in 443.73s

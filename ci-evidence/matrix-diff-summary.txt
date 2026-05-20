@@ -1,0 +1,4 @@
+
+Ports in matrix but not in use on node:
+  Ingress,TCP,9443,openshift-cloud-controller-manager-operator,cloud-controller-manager-operator,cluster-cloud-controller-manager-operator,cluster-cloud-controller-manager,master,false
+  Ingress,TCP,10258,openshift-cloud-controller-manager,aws-cloud-controller-manager,aws-cloud-controller-manager,cloud-controller-manager,master,false

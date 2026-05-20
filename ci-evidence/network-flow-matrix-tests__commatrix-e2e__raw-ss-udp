@@ -1,0 +1,66 @@
+node: ip-10-0-93-29.us-east-2.compute.internal
+UNCONN 0      0        0.0.0.0:111   0.0.0.0:* users:(("rpcbind",pid=1363,fd=5),("systemd",pid=1,fd=163))
+UNCONN 0      0      127.0.0.1:323   0.0.0.0:* users:(("chronyd",pid=943,fd=5))                          
+UNCONN 0      0      127.0.0.1:717   0.0.0.0:* users:(("rpc.statd",pid=1382,fd=13))                      
+UNCONN 0      0        0.0.0.0:43538 0.0.0.0:* users:(("rpc.statd",pid=1382,fd=7))                       
+UNCONN 0      0        0.0.0.0:6081  0.0.0.0:*                                                           
+UNCONN 0      0           [::]:111      [::]:* users:(("rpcbind",pid=1363,fd=7),("systemd",pid=1,fd=165))
+UNCONN 0      0          [::1]:323      [::]:* users:(("chronyd",pid=943,fd=6))                          
+UNCONN 0      0           [::]:42608    [::]:* users:(("rpc.statd",pid=1382,fd=9))                       
+UNCONN 0      0           [::]:6081     [::]:*                                                           
+
+node: ip-10-0-43-101.us-east-2.compute.internal
+UNCONN 0      0      127.0.0.1:323   0.0.0.0:* users:(("chronyd",pid=939,fd=5))                          
+UNCONN 0      0      127.0.0.1:703   0.0.0.0:* users:(("rpc.statd",pid=1374,fd=7))                       
+UNCONN 0      0        0.0.0.0:50830 0.0.0.0:* users:(("rpc.statd",pid=1374,fd=8))                       
+UNCONN 0      0        0.0.0.0:6081  0.0.0.0:*                                                           
+UNCONN 0      0        0.0.0.0:111   0.0.0.0:* users:(("rpcbind",pid=1355,fd=5),("systemd",pid=1,fd=186))
+UNCONN 0      0          [::1]:323      [::]:* users:(("chronyd",pid=939,fd=6))                          
+UNCONN 0      0           [::]:34417    [::]:* users:(("rpc.statd",pid=1374,fd=10))                      
+UNCONN 0      0           [::]:6081     [::]:*                                                           
+UNCONN 0      0           [::]:111      [::]:* users:(("rpcbind",pid=1355,fd=7),("systemd",pid=1,fd=188))
+
+node: ip-10-0-37-52.us-east-2.compute.internal
+UNCONN 0      0        0.0.0.0:111   0.0.0.0:* users:(("rpcbind",pid=1307,fd=5),("systemd",pid=1,fd=149))
+UNCONN 0      0      127.0.0.1:323   0.0.0.0:* users:(("chronyd",pid=970,fd=5))                          
+UNCONN 0      0      127.0.0.1:659   0.0.0.0:* users:(("rpc.statd",pid=1331,fd=5))                       
+UNCONN 0      0        0.0.0.0:36171 0.0.0.0:* users:(("rpc.statd",pid=1331,fd=8))                       
+UNCONN 0      0        0.0.0.0:6081  0.0.0.0:*                                                           
+UNCONN 0      0           [::]:111      [::]:* users:(("rpcbind",pid=1307,fd=7),("systemd",pid=1,fd=151))
+UNCONN 0      0          [::1]:323      [::]:* users:(("chronyd",pid=970,fd=6))                          
+UNCONN 0      0           [::]:46139    [::]:* users:(("rpc.statd",pid=1331,fd=10))                      
+UNCONN 0      0           [::]:6081     [::]:*                                                           
+
+node: ip-10-0-124-180.us-east-2.compute.internal
+UNCONN 0      0        0.0.0.0:37049 0.0.0.0:* users:(("rpc.statd",pid=1747,fd=7))                       
+UNCONN 0      0        0.0.0.0:6081  0.0.0.0:*                                                           
+UNCONN 0      0        0.0.0.0:111   0.0.0.0:* users:(("rpcbind",pid=1739,fd=5),("systemd",pid=1,fd=156))
+UNCONN 0      0      127.0.0.1:323   0.0.0.0:* users:(("chronyd",pid=959,fd=5))                          
+UNCONN 0      0      127.0.0.1:659   0.0.0.0:* users:(("rpc.statd",pid=1747,fd=14))                      
+UNCONN 0      0           [::]:53787    [::]:* users:(("rpc.statd",pid=1747,fd=9))                       
+UNCONN 0      0           [::]:6081     [::]:*                                                           
+UNCONN 0      0           [::]:111      [::]:* users:(("rpcbind",pid=1739,fd=7),("systemd",pid=1,fd=158))
+UNCONN 0      0          [::1]:323      [::]:* users:(("chronyd",pid=959,fd=6))                          
+
+node: ip-10-0-27-154.us-east-2.compute.internal
+UNCONN 0      0        0.0.0.0:6081  0.0.0.0:*                                                           
+UNCONN 0      0        0.0.0.0:111   0.0.0.0:* users:(("rpcbind",pid=1303,fd=5),("systemd",pid=1,fd=197))
+UNCONN 0      0      127.0.0.1:323   0.0.0.0:* users:(("chronyd",pid=956,fd=5))                          
+UNCONN 0      0      127.0.0.1:659   0.0.0.0:* users:(("rpc.statd",pid=1321,fd=16))                      
+UNCONN 0      0        0.0.0.0:42553 0.0.0.0:* users:(("rpc.statd",pid=1321,fd=7))                       
+UNCONN 0      0           [::]:6081     [::]:*                                                           
+UNCONN 0      0           [::]:111      [::]:* users:(("rpcbind",pid=1303,fd=7),("systemd",pid=1,fd=199))
+UNCONN 0      0          [::1]:323      [::]:* users:(("chronyd",pid=956,fd=6))                          
+UNCONN 0      0           [::]:59533    [::]:* users:(("rpc.statd",pid=1321,fd=9))                       
+
+node: ip-10-0-27-167.us-east-2.compute.internal
+UNCONN 0      0        0.0.0.0:6081  0.0.0.0:*                                                           
+UNCONN 0      0        0.0.0.0:111   0.0.0.0:* users:(("rpcbind",pid=1322,fd=5),("systemd",pid=1,fd=238))
+UNCONN 0      0      127.0.0.1:323   0.0.0.0:* users:(("chronyd",pid=980,fd=5))                          
+UNCONN 0      0        0.0.0.0:33280 0.0.0.0:* users:(("rpc.statd",pid=1340,fd=7))                       
+UNCONN 0      0      127.0.0.1:700   0.0.0.0:* users:(("rpc.statd",pid=1340,fd=38))                      
+UNCONN 0      0           [::]:6081     [::]:*                                                           
+UNCONN 0      0           [::]:111      [::]:* users:(("rpcbind",pid=1322,fd=7),("systemd",pid=1,fd=240))
+UNCONN 0      0          [::1]:323      [::]:* users:(("chronyd",pid=980,fd=6))                          
+UNCONN 0      0           [::]:33489    [::]:* users:(("rpc.statd",pid=1340,fd=9))                       
+
