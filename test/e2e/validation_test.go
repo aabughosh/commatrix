@@ -227,6 +227,13 @@ func filterOutPortsOfKnownServices(mat *types.ComMatrix) *types.ComMatrix {
 			continue
 		}
 
+		// CRI-O bind-mounts a listener on the node IP for attach/exec streaming; the
+		// port is allocated from the host ephemeral range and never appears as an
+		// EndpointSlice. Same class of host-only noise as rpc.statd.
+		if cd.Service == "crio" {
+			continue
+		}
+
 		// Skip dns ports used during provisioning for dhcp and tftp,
 		// not used for external traffic
 		if cd.Service == "dnsmasq" || cd.Service == "dig" {
