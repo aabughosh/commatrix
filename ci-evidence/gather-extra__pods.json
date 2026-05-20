@@ -1,0 +1,48 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "debug.openshift.io/source-container": "container-00",
+                    "debug.openshift.io/source-resource": "/v1, Resource=nodes/ip-10-0-64-5.ec2.internal",
+                    "openshift.io/required-scc": "privileged"
+                },
+                "creationTimestamp": "2026-05-19T13:59:43Z",
+                "generation": 1,
+                "labels": {
+                    "debug.openshift.io/managed-by": "oc-debug",
+                    "topology.kubernetes.io/region": "us-east-1",
+                    "topology.kubernetes.io/zone": "us-east-1f"
+                },
+                "name": "ip-10-0-64-5ec2internal-debug-g52cq",
+                "namespace": "default",
+                "resourceVersion": "25092",
+                "uid": "a7f0edb2-6fc8-4938-a39e-2daeeb28d10b"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "/bin/bash",
+                            "-c",
+                            "sleep 300"
+                        ],
+                        "env": [
+                            {
+                                "name": "TMOUT",
+                                "value": "900"
+                            },
+                            {
+                                "name": "HOST",
+                                "value": "/host"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v5.0-art-dev@sha256:4a1c2f16e6db5656ed048a3c0163fe098b0ef1e80018c6475aa899d19eadbae4",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "container-00",
+                        "resources": {},
+                        "securityContext": {
+                            "pr
