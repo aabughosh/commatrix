@@ -219,11 +219,24 @@ func isDHCPClientPort(cd types.ComDetails) bool {
 }
 
 func filterOutPortsOfKnownServices(mat *types.ComMatrix) *types.ComMatrix {
+	const (
+		// Matches default Linux / RHEL sysctl net.ipv4.ip_local_port_range (32768 60999)
+		ephemeralTCPMinPort = 32768
+		ephemeralTCPMaxPort = 60999
+	)
 	res := []types.ComDetails{}
 	for _, cd := range mat.Ports {
 		// Skip "rpc.statd" ports, these are randomly open ports on the node
 		// no need to mention them in the matrix diff
 		if cd.Service == "rpc.statd" {
+			continue
+		}
+
+		// CRI-O can hold transient TCP LISTEN sockets in the kernel ephemeral port range
+		// (e.g. exec/stream paths). They cannot be modeled as EndpointSlices.
+		if cd.Service == "crio" &&
+			cd.Protocol == "TCP" &&
+			cd.Port >= ephemeralTCPMinPort && cd.Port <= ephemeralTCPMaxPort {
 			continue
 		}
 
