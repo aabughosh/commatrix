@@ -227,6 +227,12 @@ func filterOutPortsOfKnownServices(mat *types.ComMatrix) *types.ComMatrix {
 			continue
 		}
 
+		// Skip CRI-O daemon listens on the node primary IP (e.g. streaming);
+		// ephemeral ports vary and are not represented by EndpointSlices.
+		if cd.Service == "crio" && cd.Namespace == "" {
+			continue
+		}
+
 		// Skip dns ports used during provisioning for dhcp and tftp,
 		// not used for external traffic
 		if cd.Service == "dnsmasq" || cd.Service == "dig" {
