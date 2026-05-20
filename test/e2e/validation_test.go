@@ -156,7 +156,11 @@ var _ = Describe("Validation", func() {
 
 		missingEPSMat = filterOutPortsOfKnownServices(missingEPSMat)
 		// Don't include in the missing EPS matrix ports that are in dynamic ranges of the generated commatrix.
-		missingEPSMat = filterOutPortsInDynamicRanges(missingEPSMat, commatrix.DynamicRanges)
+		// Merge Linux ephemeral range: ss shows listeners (e.g. CRI-O streams) there without EndpointSlices,
+		// while DynamicRanges from generation currently only carries Service NodePort range.
+		ssDynamicRanges := append(types.DynamicRangeList{}, commatrix.DynamicRanges...)
+		ssDynamicRanges = append(ssDynamicRanges, types.LinuxEphemeralPortDynamicRange...)
+		missingEPSMat = filterOutPortsInDynamicRanges(missingEPSMat, ssDynamicRanges)
 		if len(missingEPSMat.Ports) > 0 {
 			Fail(fmt.Sprintf("the following ports are used but don't have an endpointslice: \n %s", missingEPSMat))
 		}
