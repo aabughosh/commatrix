@@ -219,11 +219,22 @@ func isDHCPClientPort(cd types.ComDetails) bool {
 }
 
 func filterOutPortsOfKnownServices(mat *types.ComMatrix) *types.ComMatrix {
+	const (
+		// Linux default ephemeral port range (see ip_local_port_range); CRI-O may bind its
+		// streaming server here. The port is not stable and has no EndpointSlice.
+		linuxEphemeralPortMin = 32768
+		linuxEphemeralPortMax = 60999
+	)
+
 	res := []types.ComDetails{}
 	for _, cd := range mat.Ports {
 		// Skip "rpc.statd" ports, these are randomly open ports on the node
 		// no need to mention them in the matrix diff
 		if cd.Service == "rpc.statd" {
+			continue
+		}
+
+		if cd.Service == "crio" && cd.Protocol == "TCP" && cd.Port >= linuxEphemeralPortMin && cd.Port <= linuxEphemeralPortMax {
 			continue
 		}
 

@@ -1,0 +1,2 @@
+Port 33393: LISTEN 0      4096   10.0.46.231:33393 0.0.0.0:* users:(("crio",pid=2715,fd=12))
+  Matrix entry: Ingress,TCP,33393,,crio,,,master,false

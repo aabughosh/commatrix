@@ -1,0 +1,47 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "debug.openshift.io/source-container": "container-00",
+                    "debug.openshift.io/source-resource": "/v1, Resource=nodes/ip-10-0-46-231.us-west-2.compute.internal",
+                    "openshift.io/required-scc": "privileged"
+                },
+                "creationTimestamp": "2026-05-25T13:56:51Z",
+                "generation": 1,
+                "labels": {
+                    "debug.openshift.io/managed-by": "oc-debug",
+                    "topology.kubernetes.io/region": "us-west-2",
+                    "topology.kubernetes.io/zone": "us-west-2b"
+                },
+                "name": "ip-10-0-46-231us-west-2computeinternal-debug-gvjjq",
+                "namespace": "default",
+                "resourceVersion": "25603",
+                "uid": "b8d3f781-b459-46c7-9147-1a6c1e3d7abd"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "/bin/bash",
+                            "-c",
+                            "sleep 300"
+                        ],
+                        "env": [
+                            {
+                                "name": "TMOUT",
+                                "value": "900"
+                            },
+                            {
+                                "name": "HOST",
+                                "value": "/host"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:e32ddb8f334907ac3381d7cf3f84361e992cbe142ce6593400355b573dbc3717",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "container-00",
+                        "resources": {},
+                        "securityContext": {

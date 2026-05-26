@@ -1,0 +1,62 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.0.46.231"
+                    ],
+                    "conditions": {
+                        "ready": true
+                    }
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "creationTimestamp": "2026-05-25T13:15:38Z",
+                "generation": 9,
+                "labels": {
+                    "kubernetes.io/service-name": "kubernetes"
+                },
+                "name": "kubernetes",
+                "namespace": "default",
+                "resourceVersion": "19157",
+                "uid": "211ab924-da0d-4aa1-aa82-8704367320eb"
+            },
+            "ports": [
+                {
+                    "name": "https",
+                    "port": 6443,
+                    "protocol": "TCP"
+                }
+            ]
+        },
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.0.46.231"
+                    ],
+                    "conditions": {
+                        "ready": true
+                    },
+                    "nodeName": "ip-10-0-46-231.us-west-2.compute.internal",
+                    "targetRef": {
+                        "kind": "Node",
+                        "name": "ip-10-0-46-231.us-west-2.compute.internal",
+                        "uid": "59390973-ad00-4e3f-9306-f7ea99bae29d"
+                    }
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "creationTimestamp": "2026-05-25T13:22:08Z",
+                "generateName": "kubelet-",
+                "generation": 1,
+                "labels": {
+                    "

@@ -1,0 +1,9 @@
+node: ip-10-0-46-231.us-west-2.compute.internal
+UNCONN 0      0        0.0.0.0:38639 0.0.0.0:* users:(("rpc.statd",pid=1647,fd=8))                       
+UNCONN 0      0        0.0.0.0:111   0.0.0.0:* users:(("rpcbind",pid=1643,fd=5),("systemd",pid=1,fd=174))
+UNCONN 0      0      127.0.0.1:323   0.0.0.0:* users:(("chronyd",pid=1022,fd=5))                         
+UNCONN 0      0      127.0.0.1:975   0.0.0.0:* users:(("rpc.statd",pid=1647,fd=5))                       
+UNCONN 0      0           [::]:111      [::]:* users:(("rpcbind",pid=1643,fd=7),("systemd",pid=1,fd=176))
+UNCONN 0      0          [::1]:323      [::]:* users:(("chronyd",pid=1022,fd=6))                         
+UNCONN 0      0           [::]:50397    [::]:* users:(("rpc.statd",pid=1647,fd=10))                      
+
