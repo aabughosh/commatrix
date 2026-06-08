@@ -227,6 +227,13 @@ func filterOutPortsOfKnownServices(mat *types.ComMatrix) *types.ComMatrix {
 			continue
 		}
 
+		// Skip CRI-O daemon ephemeral stream-server ports. CRI-O binds a random
+		// TCP port in the Linux ephemeral range on each node's host IP; these are
+		// host-level sockets without a corresponding EndpointSlice.
+		if cd.Service == "crio" {
+			continue
+		}
+
 		// Skip dns ports used during provisioning for dhcp and tftp,
 		// not used for external traffic
 		if cd.Service == "dnsmasq" || cd.Service == "dig" {
